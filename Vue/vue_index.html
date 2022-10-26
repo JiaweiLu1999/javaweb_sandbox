@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        div {border: 1px solid red;}
+    </style>
+    <script src="vue_index.js"></script>
+</head>
+<body>
+
+<div id="app02">
+    <div id="div-01" v-if="flag">{{ msg }}</div>
+    <p v-else>Welcome!</p>
+    <input id="input-01" type="text" :value="username">
+    <input @click="getText" type="button" value="Get">
+    <input @click="changeFlag" type="button" value="Set ">
+</div>
+
+
+<!--<div id="div-01">This is a division.</div>-->
+<!--<input type="button" value="Get" onclick="getText()">-->
+<!--<input type="button" value="Set" onclick="setText()">-->
+</body>
+
+</html>

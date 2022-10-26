@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/JavaWeb_sandbox.iml" filepath="$PROJECT_DIR$/JavaWeb_sandbox.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Vue.iml" filepath="$PROJECT_DIR$/Vue.iml" />
     </modules>
   </component>
 </project>
