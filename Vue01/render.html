@@ -21,6 +21,8 @@
             <td>{{ computer.price }}</td>
         </tr>
     </table>
+
+    <input @change="event => changeTest(event, 1)" id="btn-01" type="text" value="Hello"/>
 </div>
 
 <script>
@@ -37,7 +39,12 @@
                 ]
             };
         },
-        methods: {}
+        methods: {
+            changeTest(event, hello) {
+                alert(event.target.value);
+                event.target.remove();
+            }
+        }
     }).mount("#app01")
 </script>
 </body>

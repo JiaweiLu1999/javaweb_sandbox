@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="../../Vue01/vue.js"></script>
+</head>
+<body>
+<div id="app01">
+  <div>
+    <form action="login_success.html" @submit="checkLogin">
+      <div>{{ errMsg }}</div>
+      <label>Username: </label>
+      <input type="text" placeholder="Input your username" v-model="user.username">
+      <br/>
+
+      <label>Password: </label>
+      <input type="text" placeholder="Input your password" v-model="user.password">
+      <br/>
+
+      <input type="submit">
+    </form>
+  </div>
+</div>
+</body>
+
+<script>
+    const {createApp} = Vue;
+    createApp({
+        data() {
+            return {
+                user: {username: "", password: ""},
+                errMsg: "Please Input username and password."
+            }
+        },
+        methods: {
+            checkLogin(event) {
+                if (this.user.username === "") {
+                    this.errMsg = "Please input username";
+                    event.preventDefault();
+                } else if (this.user.password === "") {
+                    this.errMsg = "Please input password";
+                    event.preventDefault();
+                }
+            }
+        }
+    }).mount("#app01");
+</script>
+
+</html>

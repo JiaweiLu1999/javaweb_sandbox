@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <script src="../../Vue01/vue.js"></script>
+</head>
+<body>
+<h3> Register Page </h3>
+<div id="app-register">
+  <form>
+    <table>
+      <tr>
+        <td><label>Username:</label></td>
+        <td><input type="text" @keyup="checkUsername" v-model="username"></td>
+        <td>{{usernameMsg}}</td>
+      </tr>
+
+      <tr>
+        <td><label>Password:</label></td>
+        <td><input type="text"></td>
+      </tr>
+
+      <tr>
+        <td><label>Confirm Password:</label></td>
+        <td><input type="text"></td>
+      </tr>
+
+      <tr>
+        <td><label>E-mail</label></td>
+        <td><input type="text"></td>
+      </tr>
+
+      <tr>
+        <td><label>Verification Code</label></td>
+        <td><input type="text"></td>
+      </tr>
+    </table>
+
+    <input type="submit">
+
+  </form>
+</div>
+
+</body>
+
+<script>
+  const {createApp} = Vue;
+  createApp({
+      data() {
+          return {
+              username: "",
+              usernameMsg: "^[0-9a-zA-Z_]{6,16}$"
+          }
+      },
+      methods: {
+          checkUsername() {
+              let reg = /^\w{6,16}$/;
+              if (reg.test(this.username)) {
+                  this.usernameMsg = "OK!";
+              } else {
+                  this.usernameMsg = "[6 - 16] [0-9a-zA-Z_]";
+              }
+          }
+      }
+  }).mount("#app-register")
+</script>
+</html>

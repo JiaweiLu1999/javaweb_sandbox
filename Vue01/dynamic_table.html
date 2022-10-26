@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <table border="1" width="300px" align="center">
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>gender</th>
+      <th>operation</th>
+    </tr>
+
+    <tr v-for="(user, index) in users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.gender }}</td>
+      <td><input @click="deleteRow(index)" type="button" value="delete"></td>
+    </tr>
+  </table>
+  <br/>
+
+  <form>
+    <input type="text" v-model="user.id"><br/>
+    <input type="text" v-model="user.name"><br/>
+    <input type="text" v-model="user.gender"><br/>
+    <input @click="submitForm" type="button" value="submit">
+  </form>
+</div>
+
+
+</body>
+
+<script>
+    const {createApp} = Vue;
+    createApp({
+        data() {
+            return {
+                user: {},
+                users: [
+                    {id: 1, name: "jae", gender: "male",}
+                ]
+            }
+        },
+        methods: {
+            deleteRow(index) {
+                this.users.splice(index, 1);
+            },
+            submitForm() {
+                this.users.push(this.user);
+                this.user = {};
+            }
+        }
+    }).mount("#app")
+</script>
+</html>
