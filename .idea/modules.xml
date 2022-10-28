@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/JavaWeb_sandbox.iml" filepath="$PROJECT_DIR$/JavaWeb_sandbox.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tomcat_helloworld/tomcat_helloworld.iml" filepath="$PROJECT_DIR$/tomcat_helloworld/tomcat_helloworld.iml" />
       <module fileurl="file://$PROJECT_DIR$/vue.iml" filepath="$PROJECT_DIR$/vue.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xml/xml.iml" filepath="$PROJECT_DIR$/xml/xml.iml" />
     </modules>
   </component>
 </project>
