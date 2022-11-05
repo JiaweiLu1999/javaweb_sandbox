@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Servlet Test Page</title>
@@ -7,7 +7,8 @@
 <body>
 
 <a href="hello-servlet">Hello Servlet</a>
-<p>The message is ...</p>
+<!--/*@thymesVar id="msg" type="java.lang.String"*/-->
+<p th:text="${msg}">The message is ...</p>
 
 </body>
 </html>
