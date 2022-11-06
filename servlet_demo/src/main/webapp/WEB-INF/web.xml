@@ -8,17 +8,9 @@
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>com.javey.servlet_demo.LoginServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>IndexServlet</servlet-name>
-        <servlet-class>com.javey.servlet_demo.IndexServlet</servlet-class>
-    </servlet>
 
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>IndexServlet</servlet-name>
-        <url-pattern>/index.html</url-pattern>
     </servlet-mapping>
 </web-app>
