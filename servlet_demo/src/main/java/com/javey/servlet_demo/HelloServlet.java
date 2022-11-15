@@ -20,7 +20,7 @@ public class HelloServlet extends HttpServlet {
         System.out.println(request.getServletContext().getAttribute("msg"));
         response.setContentType("text/html");
 
-        // Hello
+        // Hello World
         PrintWriter out = response.getWriter( );
         out.println("<html><body>");
         out.println("<h1>" + message + "</h1>");
