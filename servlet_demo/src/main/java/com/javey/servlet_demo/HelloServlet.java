@@ -2,7 +2,6 @@ package com.javey.servlet_demo;
 
 import java.io.*;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
