@@ -12,6 +12,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="book_store" target="1.8" />
       <module name="bookstore" target="1.8" />
       <module name="demo" target="1.8" />
       <module name="servlet_demo" target="1.8" />
