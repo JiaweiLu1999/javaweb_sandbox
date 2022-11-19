@@ -48,6 +48,8 @@ public class BookServlet extends BaseServlet {
 
         if (b) {
             response.sendRedirect(request.getContextPath() + "/book?flag=findAllBook");
+        } else {
+            System.out.println("delete error");
         }
 
     }
