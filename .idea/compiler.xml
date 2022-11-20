@@ -8,10 +8,12 @@
         <outputRelativeToContentRoot value="true" />
         <module name="servlet_demo" />
         <module name="bookstore" />
+        <module name="ajax" />
         <module name="tomcat_helloworld" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="ajax" target="1.8" />
       <module name="book_store" target="1.8" />
       <module name="bookstore" target="1.8" />
       <module name="demo" target="1.8" />

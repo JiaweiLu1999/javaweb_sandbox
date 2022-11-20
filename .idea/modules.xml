@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/JavaWeb_sandbox.iml" filepath="$PROJECT_DIR$/JavaWeb_sandbox.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ajax/ajax.iml" filepath="$PROJECT_DIR$/ajax/ajax.iml" />
       <module fileurl="file://$PROJECT_DIR$/bookstore/bookstore.iml" filepath="$PROJECT_DIR$/bookstore/bookstore.iml" />
       <module fileurl="file://$PROJECT_DIR$/servlet_demo/servlet_demo.iml" filepath="$PROJECT_DIR$/servlet_demo/servlet_demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/tomcat_helloworld/tomcat_helloworld.iml" filepath="$PROJECT_DIR$/tomcat_helloworld/tomcat_helloworld.iml" />

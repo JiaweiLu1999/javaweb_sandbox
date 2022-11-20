@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <script src="script/vue.js"></script>
+  <script src="script/axios.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+  <label><input type="button" value="Ajax Test" @click="ajaxTest"></label>
+</div>
+<script>
+  new Vue({
+      el:"#app",
+      data:{},
+      methods:{
+          ajaxTest: function () {
+              axios({
+                  method: "post",
+                  url: "ajax",
+                  params: {
+                      username: "javeylew",
+                      password: "12345678",
+                  }
+              }).then(response=>{
+                  for (let i = 0; i < response.data.length; i++) {
+                      console.log(response.data[i]);
+                  }
+              });
+          }
+      }
+  })
+</script>
+</body>
+</html>
