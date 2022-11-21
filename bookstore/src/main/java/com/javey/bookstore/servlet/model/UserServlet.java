@@ -1,9 +1,11 @@
 package com.javey.bookstore.servlet.model;
 
+import com.google.gson.Gson;
 import com.javey.bookstore.bean.User;
 import com.javey.bookstore.service.UserService;
 import com.javey.bookstore.service.impl.UserServiceImpl;
 import com.javey.bookstore.servlet.base.BaseServlet;
+import com.javey.bookstore.util.CommonResult;
 import org.apache.commons.beanutils.BeanUtils;
 
 import javax.servlet.*;
@@ -14,6 +16,7 @@ import java.util.Map;
 
 @WebServlet(name = "UserServlet", value = "/user")
 public class UserServlet extends BaseServlet {
+    private UserService userService = new UserServiceImpl();
 
     protected void toRegisterPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processTemplate("user/regist", request, response);
@@ -39,7 +42,6 @@ public class UserServlet extends BaseServlet {
         if (code != null && code.equals(key)) {
             //2. 处理注册的业务(暂时不考虑用户名重复的问题)
             //将信息添加到数据库即可(密码的加密问题)
-            UserService userService = new UserServiceImpl();
             boolean b = userService.regist(user);
             //3. 给响应(页面跳转)
             if (b) {
@@ -61,7 +63,6 @@ public class UserServlet extends BaseServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        UserService userService = new UserServiceImpl();
         User login = userService.login(username, password);
 
         if (login == null) {
@@ -79,6 +80,18 @@ public class UserServlet extends BaseServlet {
     protected void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.getSession().invalidate();
         response.sendRedirect(request.getContextPath() + "/index.html");
+    }
+
+    protected void checkUsername(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String username = request.getParameter("username");
+        User user = userService.checkUsername(username);
+        CommonResult res;
+        if (user == null) {
+            res = CommonResult.ok();
+        } else {
+            res = CommonResult.error();
+        }
+        response.getWriter().write(new Gson().toJson(res));
     }
 
 

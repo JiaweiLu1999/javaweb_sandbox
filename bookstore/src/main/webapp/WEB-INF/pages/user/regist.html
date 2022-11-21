@@ -13,6 +13,7 @@
       }
   </style>
   <script src="static/script/vue.js"></script>
+  <script src="static/script/axios.min.js"></script>
 </head>
 <body>
 <div id="app">
@@ -89,7 +90,8 @@
             emailErrMsg: "请输入正确的邮箱格式",
             code:"[[${code}]]",
             codeErrMsg: "[[${codeErrMsg==null?'请输入正确的验证码':codeErrMsg}]]",
-            codeSrc: "kaptchaServlet"
+            codeSrc: "kaptchaServlet",
+            usernameFlag: false,
         },
         methods: {
             checkUsername: function () {
@@ -98,11 +100,24 @@
                 if (usernameReg.test(this.username)) {
                     //说明符合条件
                     //需要将信息提示改为√
-                    this.usernameErrMsg = "√"
-                    return true;
+                    axios({
+                        method: "post",
+                        url: "user?flag=checkUsername",
+                        params: {
+                            username: this.username
+                        }
+                    }).then(response=>{
+                        if (response.data.flag) {
+                            this.usernameErrMsg = "√";
+                            this.usernameFlag = true;
+                        } else {
+                            this.usernameErrMsg = "用户名已存在";
+                            this.usernameFlag = false;
+                        }
+                    });
                 } else {
                     this.usernameErrMsg = "用户名应为6~16位数组和字母组成"
-                    return false;
+                    this.usernameFlag = false;
                 }
             },
             checkPassword: function () {
@@ -117,7 +132,7 @@
             },
             checkConfirmPassword: function () {
                 if (this.checkPassword()) {
-                    if (this.password == this.confirmPassword) {
+                    if (this.password === this.confirmPassword) {
                         this.confirmPasswordErrMsg = "√"
                         return true;
                     } else {
@@ -139,7 +154,8 @@
                 }
             },
             checkAll: function () {
-                if (!(this.checkUsername() & this.checkPassword() & this.checkConfirmPassword() & this.checkEmail())) {
+                this.checkUsername();
+                if (!(this.usernameFlag & this.checkPassword() & this.checkConfirmPassword() & this.checkEmail())) {
                     //阻止表单提交
                     event.preventDefault()
                 }

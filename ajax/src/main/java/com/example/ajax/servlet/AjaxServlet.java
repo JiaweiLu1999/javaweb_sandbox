@@ -1,7 +1,8 @@
-package com.example.ajax;
+package com.example.ajax.servlet;
 
 
 
+import com.example.ajax.bean.User;
 import com.google.gson.Gson;
 
 import javax.servlet.*;

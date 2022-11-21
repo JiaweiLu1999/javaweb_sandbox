@@ -21,6 +21,7 @@ public abstract class BaseDaoImpl {
         try {
             return queryRunner.update(JDBCTools.getConnection(),sql,args);
         } catch (SQLException e) {
+            JDBCTools.releaseConnection();
             throw new RuntimeException(e);
         }
     }
@@ -53,6 +54,7 @@ public abstract class BaseDaoImpl {
         try {
             return queryRunner.query(JDBCTools.getConnection(),sql,new BeanListHandler<T>(clazz),args);
         } catch (SQLException e) {
+            JDBCTools.releaseConnection();
             throw new RuntimeException(e);
         }
     }
@@ -61,6 +63,7 @@ public abstract class BaseDaoImpl {
         try {
             return queryRunner.query(JDBCTools.getConnection(),sql,new ScalarHandler(),args);
         } catch (SQLException e) {
+            JDBCTools.releaseConnection();
             throw new RuntimeException(e);
         }
     }
@@ -69,6 +72,7 @@ public abstract class BaseDaoImpl {
         try {
             queryRunner.batch(JDBCTools.getConnection(),sql,args);
         } catch (SQLException e) {
+            JDBCTools.releaseConnection();
             throw new RuntimeException(e);
         }
     }

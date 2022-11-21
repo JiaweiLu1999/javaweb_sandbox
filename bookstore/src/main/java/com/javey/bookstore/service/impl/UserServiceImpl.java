@@ -30,6 +30,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User checkUsername(String username) {
+        return userDao.findUserByUsername(username);
+    }
+
+    @Override
     public boolean regist(User user) {
         //1. 加密
         user.setPassword(MD5Util.encode(user.getPassword()));

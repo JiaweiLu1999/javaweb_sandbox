@@ -1,4 +1,4 @@
-package com.example.ajax;
+package com.example.ajax.servlet;
 
 import java.io.*;
 import javax.servlet.http.*;

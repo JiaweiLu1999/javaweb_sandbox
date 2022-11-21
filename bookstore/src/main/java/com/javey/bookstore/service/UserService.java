@@ -23,4 +23,6 @@ public interface UserService {
      * @return
      */
     User login(String username,String password);
+
+    User checkUsername(String username);
 }

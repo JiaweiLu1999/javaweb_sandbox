@@ -5,10 +5,18 @@
          version="4.0">
     <servlet>
         <servlet-name>AjaxServlet</servlet-name>
-        <servlet-class>com.example.ajax.AjaxServlet</servlet-class>
+        <servlet-class>com.example.ajax.servlet.AjaxServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AjaxTestServlet</servlet-name>
+        <servlet-class>com.example.ajax.servlet.AjaxTestServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AjaxServlet</servlet-name>
         <url-pattern>/ajax</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AjaxTestServlet</servlet-name>
+        <url-pattern>/ajax02</url-pattern>
     </servlet-mapping>
 </web-app>
