@@ -1,5 +1,6 @@
 package com.javey.bookstore.bean;
 
+import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +17,6 @@ public class Cart {
             CartItem cartItem = map.get(book.getBookId());
             cartItem.setCount(cartItem.getCount() + 1);
         }
-        System.out.println(map);
     }
 
     public Integer getTotalCount() {
@@ -31,15 +31,35 @@ public class Cart {
 
     public Double getTotalAmount() {
         Collection<CartItem> values = map.values();
-        Double total = 0.0;
+        BigDecimal total = new BigDecimal("0");
         for (CartItem item : values) {
-            total += item.getAmount();
+            BigDecimal amount = new BigDecimal(item.getAmount().toString());
+            total = total.add(amount);
         }
-        this.totalAmount = total;
-        return total;
+        this.totalAmount = total.doubleValue();
+        return this.totalAmount;
     }
 
     public Collection<CartItem> getAllCartItem() {
         return map.values();
+    }
+
+    public void deleteCartItem(Integer id) {
+        map.remove(id);
+    }
+
+    public void addCount(Integer id) {
+        CartItem cartItem = map.get(id);
+        cartItem.setCount(cartItem.getCount() + 1);
+    }
+
+    public void subtractCount(Integer id) {
+        CartItem cartItem = map.get(id);
+        cartItem.setCount(cartItem.getCount() - 1);
+    }
+
+    public void changeCount(Integer id, Integer count) {
+        CartItem cartItem = map.get(id);
+        cartItem.setCount(count);
     }
 }

@@ -39,6 +39,9 @@ public class CartServlet extends BaseServlet {
 
     protected void showCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Cart cart = (Cart) request.getSession().getAttribute("cart");
+        if (cart == null) {
+            cart = new Cart();
+        }
         Collection<CartItem> allCartItem = cart.getAllCartItem();
         Integer totalCount = cart.getTotalCount();
         Double totalAmount = cart.getTotalAmount();
@@ -48,8 +51,42 @@ public class CartServlet extends BaseServlet {
         list.add(totalAmount);
         CommonResult commonResult = CommonResult.ok().setResultData(list);
         String s = new Gson().toJson(commonResult);
-        response.setContentType("text/html;charset=utf-8");
         response.getWriter().write(s);
+    }
+
+    protected void clearCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getSession().removeAttribute("cart");
+        processTemplate("cart/cart", request, response);
+    }
+
+    protected void deleteCartItem(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");
+        HttpSession session = request.getSession();
+        Cart cart = (Cart) session.getAttribute("cart");
+        cart.deleteCartItem(Integer.parseInt(id));
+        showCart(request, response);
+    }
+
+    protected void addCount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");
+        Cart cart = (Cart) request.getSession().getAttribute("cart");
+        cart.addCount(Integer.parseInt(id));
+        showCart(request, response);
+    }
+
+    protected void subtractCount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");
+        Cart cart = (Cart) request.getSession().getAttribute("cart");
+        cart.subtractCount(Integer.parseInt(id));
+        showCart(request, response);
+    }
+
+    protected void changeCount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");
+        String count = request.getParameter("count");
+        Cart cart = (Cart) request.getSession().getAttribute("cart");
+        cart.changeCount(Integer.parseInt(id), Integer.parseInt(count));
+        showCart(request, response);
     }
 
 
